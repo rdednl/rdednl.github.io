@@ -64,13 +64,15 @@
 
   <tr>
     <td width="67%" valign="middle" align="justify">
-    <p>I am a first-year PhD student at University of British Columbia exploring applications of reinforcement learning to robotics.</p>
+    <p>I am a first-year PhD student at <a href="https://www.cs.ubc.ca/">University of British Columbia</a> exploring applications of reinforcement learning to robotics with professor <a href="https://www.cs.ubc.ca/~van/">Michiel Van de Panne</a>. I have a wide range of interests but my current research focus is mostly on representation learning applied to reinforcement learning problems.</p>
 
     <p>Before, I was a reinforcement learning researcher at <a href="http://wayve.ai/">Wayve</a>, applying  machine learning to robotics control to teach cars how to drive themselves.</p>
 
-    <p>I completed my B.Sc. and my M.Sc. at <a href="https://www.polito.it/en">Polytechnic University of Turin</a>. During this period I was granted a double degree scholarship to study for one year at Telecom ParisTech - <a href="http://www.eurecom.fr/en">Eurecom 
+    <p>I completed my B.Sc. at <a href="https://www.polito.it/en">Polytechnic University of Turin</a> and my M.Sc jointly between Polytechnic University of Turin and Telecom ParisTech - <a href="http://www.eurecom.fr/en">Eurecom 
 Research Center</a>. I was a visiting researcher at <a href="http://bair.berkeley.edu">Berkeley AI Research</a> at UC Berkeley for 8 months where I did research for my master thesis with professor <a href="https://people.eecs.berkeley.edu/~bajcsy/">Ruzena 
-Bajcsy</a>.</p>
+Bajcsy</a> related to graphical models and statistical learning.</p>
+
+    <p>Sometimes I write about random stuff over <a href="http://rdednl.github.io/blog">here</a>.</p>
 
     <p align=center>
     <a href="resume_reda.pdf">CV</a> |
@@ -92,22 +94,39 @@ Bajcsy</a>.</p>
 
   <tr>
     <td width="100%" valign="top">
+      <heading>Urban Driving with Conditional Imitation Learning</heading></a><br>
+      Jeffrey Hawke* Richard Shen*, Corina Gurau*, Siddharth Sharma*, <strong>Daniele Reda*</strong>, Nikolay Nikolov*, Przemyslaw Mazur*, Sean Micklethwaite*, Nicolas Griffiths*, Amar Shah*, Alex Kendall*<br>
+      (* indicates equal contribution)<br>
+      <em>Machine Learning for Autonomous Driving Workshop at NeurIPS</em>, 2019
+      </p>
+
+      <a href="https://arxiv.org/abs/1807.00412">arXiv</a> |
+      <a href="https://wayve.ai/blog/learned-urban-driving">blog post</a> |
+      <a href="https://youtu.be/ztji_PA1tmI">video</a>
+
+      <!-- <p align="justify"> Abstract: Hand-crafting generalised decision-making rules for real-world urban autonomous driving is hard. Alternatively, learning behaviour from easy-to-collect human driving demonstrations is appealing. Prior work has studied imitation learning (IL) for autonomous driving with a number of limitations. Examples include only performing lane-following rather than following a user-deﬁned route, only using a single camera view or heavily cropped frames lacking state observability, only lateral (steering) control, but not longitudinal (speed) control and a lack of interaction with trafﬁc. Importantly, the majority of such systems have been primarily evaluated in simulation - a simple domain, which lacks real-world complexities. Motivated by these challenges, we focus on learning representations of semantics, geometry and motion with computer vision for IL from human driving demonstrations. As our main contribution, we present an end-to-end conditional imitation learning approach, combining both lateral and longitudinal control on a real vehicle for following urban routes with simple trafﬁc. We address inherent dataset bias by data balancing, training our ﬁnal policy on approximately 30 hours of demonstrations gathered over six months. We evaluate our method on an autonomous vehicle by driving 35km of novel routes in European urban streets.</i></p>  -->
+    </td>
+  </tr>
+
+  <tr>
+    <td width="100%" valign="top">
       <heading>Learning to drive in a day</heading></a><br>
       Alex Kendall, Jeffrey Hawke, David Janz, Przemyslaw Mazur, <strong>Daniele Reda</strong>, John-Mark Allen, Vinh-Dieu Lam, Alex Bewley, Amar Shah<br>
+      <em>International Conference on Robotics and Automation</em> (ICRA), 2019<br>
+      (Also in <em>Machine Learning for Intelligent Transportation Systems Workshop at NeurIPS</em>, 2018)
       </p>
 
       <a href="https://arxiv.org/abs/1807.00412">arXiv</a> |
       <a href="https://wayve.ai/blog/learning-to-drive-in-a-day-with-reinforcement-learning">blog post</a> |
-      <a href="https://arxiv.org/pdf/1807.00412.pdf">pdf</a>
-      <br>
-
-      <p align="justify"> Abstract: We demonstrate the first application of deep reinforcement learning to autonomous driving. From randomly initialised parameters, our model is able to learn a policy for lane following in a handful of training episodes using a single monocular image as input. We provide a general and easy to obtain reward: the distance travelled by the vehicle without the safety driver taking control. We use a continuous, model-free deep reinforcement learning algorithm, with all exploration and optimisation performed on-vehicle. This demonstrates a new framework for autonomous driving which moves away from reliance on defined logical rules, mapping, and direct supervision. We discuss the challenges and opportunities to scale this approach to a broader range of autonomous driving tasks.</i></p> 
+      <a href="https://www.youtube.com/watch?v=eRwTbRtnT1I&t=71s">video</a>
+      
+      <!-- <p align="justify"> Abstract: We demonstrate the first application of deep reinforcement learning to autonomous driving. From randomly initialised parameters, our model is able to learn a policy for lane following in a handful of training episodes using a single monocular image as input. We provide a general and easy to obtain reward: the distance travelled by the vehicle without the safety driver taking control. We use a continuous, model-free deep reinforcement learning algorithm, with all exploration and optimisation performed on-vehicle. This demonstrates a new framework for autonomous driving which moves away from reliance on defined logical rules, mapping, and direct supervision. We discuss the challenges and opportunities to scale this approach to a broader range of autonomous driving tasks.</i></p> --> 
     </td>
   </tr>
 
 </table>
 
-<table width="100%" align="center" border="0" cellpadding="20">
+<!-- <table width="100%" align="center" border="0" cellpadding="20">
   <tr><td>
     <sectionheading>Outreach</sectionheading>
     <ul>
@@ -115,7 +134,7 @@ Bajcsy</a>.</p>
     <li> I (try to) <a href="http://rdednl.github.io/blog">blog</a> on my interests. Mostly related to outdoor exploration.</li>
     </ul>
   </td></tr>
-</table>
+</table> -->
 
 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
     <tr><td><br><p align="right"><font size="2">
