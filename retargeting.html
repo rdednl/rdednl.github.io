@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Physics-based Motion Retargeting from Sparse Inputs</title>
+
+    <style>
+      :root {
+        --accent-color: rgb(6, 69, 173);
+        --fg-color: rgb(32, 33, 34);
+        --bg-color: #fff;
+        --max-content-width: 800px;
+      }
+
+      body {
+        font-family: sans-serif;
+        font-size: calc(12px + 0.05vw);
+        color: var(--fg-color);
+        background-color: var(--bg-color);
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      main {
+        margin: 0 auto;
+        width: 90vw;
+        max-width: var(--max-content-width);
+        padding: 2rem 0;
+        background-color: var(--bg-color);
+        min-height: 90vh;
+      }
+
+      h1, h2 {
+        font-weight: 600;
+        margin-top: 1.3em;
+      }
+
+      h1 {
+        font-size: 2.2em;
+      }
+
+      h2 {
+        font-size: 1.9em;
+      }
+
+      p, li {
+        font-size: 1.3em;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--accent-color);
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      .keycap {
+        display: inline-block;
+        margin: .1em;
+        padding: .1em .6em;
+        font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+        color: #242729;
+        text-shadow: 0 1px 0 #FFF;
+        background-color: #e1e3e5;
+        border: 1px solid #adb3b9;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #FFF inset;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1 style="margin-top: 0;">Physics-based Motion Retargeting from Sparse Inputs</h1>
+      <div>
+        <span style="font-style: italic; font-size: 1.3em;">In 22nd ACM SIGGRAPH/EUROGRAPHICS Symposium on Computer Animation (SCA 2023)</span>
+        <p style="line-height: 1.5;">
+          <span style="display: block;">DANIELE REDA, <span style="font-size: 0.85em;">University of British Columbia, Canada</span></span>
+          <span style="display: block;">JUNGDAM WON, <span style="font-size: 0.85em;">Meta AI Research, Pittsburgh, United States</span></span>
+          <span style="display: block;">YUTING YE, <span style="font-size: 0.85em;">Reality Labs Research, Meta, United States</span></span>
+          <span style="display: block;">MICHIEL VAN DE PANNE, <span style="font-size: 0.85em;">University of British Columbia, Canada</span></span>
+          <span style="display: block;">ALEXANDER WINKLER, <span style="font-size: 0.85em;">Reality Labs Research, Meta, United States</span></span>
+        </p>
+      </div>
+      <p>
+        <picture>
+          <img alt="teaser-retargeting" src="data/teaser-retargeting.png" width="3600" height="627">
+        </picture>
+      </p>
+      <p style="font-size: 1.4em;">
+        <span style="font-weight: 600;">Paper:</span> <a href="">ArXiv</a>
+      </p>
+      <p>
+        Avatars are important to create interactive and immersive experiences in virtual worlds.
+        One challenge in animating these characters to mimic a user's motion is that commercial AR/VR products consist only of a headset and controllers, providing very limited sensor data of the user's pose. Another challenge is that an avatar might have a different skeleton structure than a human and the mapping between them is unclear. In this work we address both of these challenges. We introduce a method to retarget motions in real-time from sparse human sensor data to characters of various morphologies. Our method uses reinforcement learning to train a policy to control characters in a physics simulator. We only require human motion capture data for training, without relying on artist-generated animations for each avatar. This allows us to use large motion capture datasets to train general policies that can track unseen users from real and sparse data in real-time. We demonstrate the feasibility of our approach on three characters with different skeleton structure: a dinosaur, a mouse-like creature and a human. We show that the avatar poses often match the user surprisingly well, despite having no sensor information of the lower body available. We discuss and ablate the critical components in our framework, specifically the kinematic retargeting step, the imitation, contact and action reward as well as our asymmetric actor-critic observations. We further explore the robustness of our method in a variety of settings including unbalancing, dancing and sports motions.
+      </p>
+
+      <h2>Summary</h2>
+      <p>
+        The policy $\pi$ receives the Quest sensor input $o_{t, user}$ and the current state of the simulated character $o_{t, sim}$ as observation and computes torques $a_t$ to apply to a physics simulator. During training, we use human motion capture data $s_{t, gt}$ to estimate a rough pose $s_{t, kin}$ of the simulated character ("kinematic retargeting"). The reward encourages the simulated character $s_{t, sim}$ to imitate this rough kinematic pose $s_{t, kin}$ as best as possible, while respecting all the physical constraints imposed by the simulator. After the policy is trained, full-body data or kinematic retargeting is not required anymore, and the simulated character can be driven purely by the HMD and controller sparse sensor.
+      </p>
+      <img alt="Illustration of our retargeting system" src="data/setup-retargeting.png" width="1779" height="756">
+
+      <h2>Video</h2>
+
+
+      <h2>BibTeX</h2>
+      <pre style="line-height: 1.4; overflow: auto; font-size: 0.8rem;">
+@inproceedings{retargeting2023reda,
+  author = {Reda, Daniele and Won, Jungdam and Ye, Yuting and van de Panne, Michiel and Winkler, Alexander},
+  title = {Physics-based Motion Retargeting from Sparse Inputs},
+  year = {2023},
+  booktitle = {22nd ACM SIGGRAPH/EUROGRAPHICS Symposium on Computer Animation},
+  series = {SCA '23}
+}
+      </pre>
+
+  </body>
+</html>
