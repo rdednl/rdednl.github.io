@@ -74,6 +74,30 @@
         box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #FFF inset;
         white-space: nowrap;
       }
+
+      /* Set your aspect ratio */
+      .video-container {
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        padding-bottom: 56.25%; /* creates a 16:9 aspect ratio */
+      }
+
+      .video-container iframe,
+      .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+      }
+
+      /* And set the max-width of the parent element */
+      .video-wrap {
+        width: 100%;
+        max-width: 800px;
+      }
     </style>
   </head>
 
@@ -96,7 +120,8 @@
         </picture>
       </p>
       <p style="font-size: 1.4em;">
-        <span style="font-weight: 600;">Paper:</span> <a href="">ArXiv</a>
+        <span style="font-weight: 600;">Paper:</span> <a href="https://arxiv.org/abs/4989162">ArXiv</a>
+        <span style="font-weight: 600;">Video:</span> <a href="https://youtu.be/5D-DvX5scTk">Youtube</a>
       </p>
       <p>
         Avatars are important to create interactive and immersive experiences in virtual worlds.
@@ -111,6 +136,11 @@
 
       <h2>Video</h2>
 
+      <div class="video-wrap">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/5D-DvX5scTk"></iframe>
+        </div>
+      </div>
 
       <h2>BibTeX</h2>
       <pre style="line-height: 1.4; overflow: auto; font-size: 0.8rem;">
