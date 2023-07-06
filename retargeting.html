@@ -99,6 +99,9 @@
         max-width: 800px;
       }
     </style>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
 
   <body>
@@ -130,7 +133,7 @@
 
       <h2>Summary</h2>
       <p>
-        The policy $\pi$ receives the Quest sensor input $o_{t, user}$ and the current state of the simulated character $o_{t, sim}$ as observation and computes torques $a_t$ to apply to a physics simulator. During training, we use human motion capture data $s_{t, gt}$ to estimate a rough pose $s_{t, kin}$ of the simulated character ("kinematic retargeting"). The reward encourages the simulated character $s_{t, sim}$ to imitate this rough kinematic pose $s_{t, kin}$ as best as possible, while respecting all the physical constraints imposed by the simulator. After the policy is trained, full-body data or kinematic retargeting is not required anymore, and the simulated character can be driven purely by the HMD and controller sparse sensor.
+        The policy \(\pi\) receives the Quest sensor input \(o_{t, user}\) and the current state of the simulated character \(o_{t, sim}\) as observation and computes torques \(a_t\) to apply to a physics simulator. During training, we use human motion capture data \(s_{t, gt}\) to estimate a rough pose \(s_{t, kin}\) of the simulated character ("kinematic retargeting"). The reward encourages the simulated character \(s_{t, sim}\) to imitate this rough kinematic pose \(s_{t, kin}\) as best as possible, while respecting all the physical constraints imposed by the simulator. After the policy is trained, full-body data or kinematic retargeting is not required anymore, and the simulated character can be driven purely by the HMD and controller sparse sensor.
       </p>
       <img alt="Illustration of our retargeting system" src="data/setup-retargeting.png" width="1779" height="756">
 
@@ -144,13 +147,13 @@
 
       <h2>BibTeX</h2>
       <pre style="line-height: 1.4; overflow: auto; font-size: 0.8rem;">
-@inproceedings{retargeting2023reda,
-  author = {Reda, Daniele and Won, Jungdam and Ye, Yuting and van de Panne, Michiel and Winkler, Alexander},
-  title = {Physics-based Motion Retargeting from Sparse Inputs},
-  year = {2023},
-  booktitle = {22nd ACM SIGGRAPH/EUROGRAPHICS Symposium on Computer Animation},
-  series = {SCA '23}
-}
+        @inproceedings{retargeting2023reda,
+          author = {Reda, Daniele and Won, Jungdam and Ye, Yuting and van de Panne, Michiel and Winkler, Alexander},
+          title = {Physics-based Motion Retargeting from Sparse Inputs},
+          year = {2023},
+          booktitle = {22nd ACM SIGGRAPH/EUROGRAPHICS Symposium on Computer Animation},
+          series = {SCA '23}
+        }
       </pre>
 
   </body>
