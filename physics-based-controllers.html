@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Learning Physics-Based Character Controllers</title>
+
+    <style>
+      :root {
+        --accent-color: rgb(6, 69, 173);
+        --fg-color: rgb(32, 33, 34);
+        --bg-color: #fff;
+        --max-content-width: 800px;
+      }
+
+      body {
+        font-family: sans-serif;
+        font-size: calc(12px + 0.05vw);
+        color: var(--fg-color);
+        background-color: var(--bg-color);
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      main {
+        margin: 0 auto;
+        width: 90vw;
+        max-width: var(--max-content-width);
+        padding: 2rem 0;
+        background-color: var(--bg-color);
+        min-height: 90vh;
+      }
+
+      h1, h2 {
+        font-weight: 600;
+        margin-top: 1.3em;
+      }
+
+      h1 {
+        font-size: 2.2em;
+      }
+
+      h2 {
+        font-size: 1.9em;
+      }
+
+      p, li {
+        font-size: 1.3em;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--accent-color);
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      .keycap {
+        display: inline-block;
+        margin: .1em;
+        padding: .1em .6em;
+        font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+        color: #242729;
+        text-shadow: 0 1px 0 #FFF;
+        background-color: #e1e3e5;
+        border: 1px solid #adb3b9;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgba(12,13,14,0.2), 0 0 0 2px #FFF inset;
+        white-space: nowrap;
+      }
+
+      /* Set your aspect ratio */
+      .video-container {
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        padding-bottom: 56.25%; /* creates a 16:9 aspect ratio */
+      }
+
+      .video-container iframe,
+      .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+      }
+
+      /* And set the max-width of the parent element */
+      .video-wrap {
+        width: 100%;
+        max-width: 800px;
+      }
+    </style>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <h1 style="margin-top: 0;">Learning Physics-Based Character Controllers</h1>
+      <div>
+        <span style="font-style: italic; font-size: 1.3em;">A course presented at the SCA Summer School 2024</span>
+        <p style="line-height: 1.5;">
+        <span style="display: block;"><a href="https://rdednl.github.io/">DANIELE REDA</a>, <span style="font-size: 0.85em;">University of British Columbia, Canada</span></span>
+        </p>
+      </div>
+      <p>
+        <picture>
+          <img alt="physics-based-teaser" src="data/physics-based-teaser.png" width="3600" height="627">
+        </picture>
+      </p>
+      <p style="font-size: 1.4em;">
+      <b><a href="data/physics_based_character_controllers.pdf">Download slides here</a></b>
+      </p>
+<!--       <p>
+      In this lecture, I will dive into the field of physics-based character control,  an approach that leverages physical simulations to create lifelike and responsive motions for digital characters. After a quick introduction to the three fundamental components for character control: physics-simulation, characters and motion controllers, the rest of the lecture is spent on learning motion controllers.
+      Students will learn what are the most recent techniques to create a motion controller using reinforcement and imitation learning. The lecture will cover different reward structures, ways to use motion capture data to aid the learning, and more advanced techniques to learn harder and more complex motions. Finally, we will move to showcasing different examples with humanoid motion control, virtual characters, and robots in the real world.
+      </p> -->
+
+      <h2>Resources</h2>
+      <p><b>Courses and Books</b></p>
+      <ul>
+        <li>
+          <b><a href="https://huggingface.co/learn/deep-rl-course/en/unit0/introduction">HuggingFace Reinforcement Learning Course</a></b>
+        </li>
+        <li>
+          <b><a href="http://incompleteideas.net/book/the-book-2nd.html">Sutton & Barto, Reinforcement Learning: An Introduction</a></b>
+        </li>
+        <li>
+          <b><a href="https://github.com/create3000/titania/blob/master/Papers/%5B2008%20Featherstone%5D%20Rigid%20Body%20Dynamics%20Algorithms.pdf">Featherstone, Rigid Body Dynamics Algorithms</a></b>: Textbook on forward dynamics simulation
+        </li>
+      </ul>
+
+
+      <p><b>Surveys</b></p>
+      <ul>
+        <li>
+          <b><a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1467-8659.2012.03189.x">Interactive Character Animation Using Simulated Physics: A State-of-the-Art Review</a></b>: A survey from 2012 summarizing old approaches (pre-deep learning) for learning physics-based controllers.
+        </li>
+        <li>
+          <b><a href="https://arxiv.org/abs/2203.04735">A Survey on Reinforcement Learning Methods in Character Animation</a></b>: A more recent survey giving a nice introduction on RL algorithms and a second section on how RL algorithms are used for learning character motions.
+        </li>
+        <li>
+          <b><a href="https://ieeexplore.ieee.org/document/9494694">A Survey on Simulation Environments for Reinforcement Learning</a></b>: A 2021 survey summarizing different simulation environments used for RL pipelines.
+        </li>
+      </ul>
+
+      <p><b>Papers</b></p>
+      <ul>
+        <li>
+          <b><a href="https://xbpeng.github.io/projects/DeepMimic/index.html">Deepmimic</a></b>: This paper introduces the usage of motion capture data in reinforcement learning, as a way to formulate reward functions in the context of imitation. A lot of what this paper introduces is now common practice.
+        </li>
+        <li>
+          <b><a href="https://xbpeng.github.io/projects/AMP/index.html">AMP</a></b>: This paper extends the concept of imitation-based reward function, with the usage of adversarial learning. It is an application of the paper GAIL to motion imitation.
+        </li>
+        <li>
+          <b><a href="https://www.cs.ubc.ca/~van/papers/2020-allsteps/index.html">ALLSTEPS</a></b>: This paper shows that through curriculum learning, a pure-objective reward approach is capable of learn robust controllers for difficult tasks.
+        </li>
+        <li>
+          <b><a href="https://brachiation-rl.github.io/brachiation/">Brachiation</a></b>: This paper shows that little signal is better than no signal. Using a simplified physical model, you can get imitation data for the center of mass for the full articulated character, which is enough to learn the full motion.
+        </li>
+        <li>
+          <b><a href="https://arxiv.org/abs/2209.09391">QuestSim</a></b>: This paper shows that through an imitation-based reward, physics simulation and RL, it is possible to learn a controller that tracks a human through only a 3-point input VR headset and controllers. It uses privileged information at training time, and learns to "fill in" the rest of the body at inference time.
+        </li>
+        <li>
+          <b><a href="https://www.cs.ubc.ca/~dreda/retargeting.html">Retargeting</a></b>: This paper extends the above, by providing real-time control and retargeting to virtual non-human avatars, by leveraging "rough" imitation data and physics.
+        </li>
+        <li>
+          <b><a href="https://dl.acm.org/doi/10.1145/1553374.1553380">Curriculum Learning</a></b>: A high level paper on the concept of curriculum learning in machine learning.
+        </li>
+      </ul>
+
+
+
+      </p>
+
+      <h2>Repositories</h2>
+
+      <ul>
+        <li>
+          <b><a href="https://github.com/isaac-sim/IsaacGymEnvs">IsaacGymEnvs</a></b>: A good place to start for environments and frameworks for learning controllers in IsaacGym.
+        </li>
+      </ul>
+
+      <!-- <h2>Zotero Library</h2> -->
+
+
+
+<!--       <h2>BibTeX</h2>
+      <pre style="line-height: 1.4; overflow: auto; font-size: 0.8rem;">
+      </pre>
+ -->
+  </body>
+</html>
